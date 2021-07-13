@@ -10,7 +10,7 @@
       <!-- Material input email -->
       <div class="md-form">
         <i class="far fa-envelope  prefix grey-text"></i>
-        <input type="email" formControlName="mail" class="form-control" mdbInput placeholder="Correo">
+        <input type="usuario" formControlName="user" class="form-control" mdbInput placeholder="Usuario">
       </div>
       <!-- Material input password -->
       <div class="md-form">
@@ -20,7 +20,7 @@
 
       <!-- Button-->
       <div class="text-center py-4 mt-3 ">
-        <button class="btn buttonKaranPrimary w-50">Iniciar Sesión</button>
+        <button class="btn buttonKaranPrimaryModals w-50" (click)="logearse()">Iniciar Sesión</button>
       </div>
     </form>
   </div>

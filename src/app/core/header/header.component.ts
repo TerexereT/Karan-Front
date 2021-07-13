@@ -3,6 +3,8 @@ import {ModalComponent} from "../modal/modal.component";
 import { MDBModalRef, MDBModalService } from 'ng-uikit-pro-standard';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.validatingForm = new FormGroup({
-      loginFormModalEmail: new FormControl('', Validators.email),
+      //loginFormModalEmail: new FormControl('', Validators.email),
+      loginFormModalUser: new FormControl('', Validators.required),
       loginFormModalPassword: new FormControl('', Validators.required)
     });
   }
@@ -25,4 +28,5 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.show(ModalComponent)
   }
 
+  
 }

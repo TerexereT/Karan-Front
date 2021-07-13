@@ -15,6 +15,9 @@ export class KaranApiService {
   public registerJuridico(info: any): Observable<any> {
     return this.http.post<any>(apiKaran.registerJur,info);
   }
+  public loginUsr(info: any): Observable<any> {
+    return this.http.post<any>(apiKaran.loginAuth,info);
+  }
 
 }
 

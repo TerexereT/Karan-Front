@@ -1,14 +1,14 @@
-const path = require('path');
+//Install express server
 const express = require('express');
+const path = require('path');
+
 const app = express();
 
-// Serve static files
-app.use(express.static(__dirname + '/dist/frontkaran'));
+// Serve only the static files form the dist directory
+app.use(express.static('./dist/Karan-Front'));
 
-// Send all requests to index.html
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/frontkaran/index.html'));
-});
-
-// default Heroku port
-app.listen(process.env.PORT || 5000);
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', {root: 'dist/Karan-Front/'}),
+);
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080); 
