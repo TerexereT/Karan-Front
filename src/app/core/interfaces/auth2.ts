@@ -13,3 +13,13 @@ export interface Token {
   scope: string
   refresh_token: string
 }
+
+export interface signUp {
+  email: string,
+  username: string,
+  dni: number,
+  first_name: string,
+  last_name: string,
+  password: string,
+  password_confirmation: string
+}
