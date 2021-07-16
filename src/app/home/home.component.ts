@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AlertsService} from '../core/services/alerts.service';
 import {Auth2Service} from '../core/services/auth/auth2.service';
 import {signUp} from '../core/interfaces/auth2';

@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalComponent} from "../modal/modal.component";
-import { MDBModalRef, MDBModalService } from 'ng-uikit-pro-standard';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ModalComponent} from '../modal/modal.component';
+import {MDBModalRef, MDBModalService} from 'ng-uikit-pro-standard';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -28,5 +26,5 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.show(ModalComponent)
   }
 
-  
+
 }

@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import Swal from 'sweetalert2';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatSnackBarConfig} from '@angular/material/snack-bar/snack-bar-config';
 import {ToastrService} from 'ngx-toastr';
 
