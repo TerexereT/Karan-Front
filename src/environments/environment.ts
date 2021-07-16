@@ -10,13 +10,6 @@ export const environment = {
     client_secret: '8dVhcyLLxB4kmRxcy1bzvR7svQ0rrD79nEZ6j906TFp8nVo9uhj9eiFhYUMEm9slbylv3RCaiEBa2m1ZlZotLhrairPasDrP9MUpqN8bbhqP1jqsdJHZr6YEpdLJ64iL'
   }
 };
-
-export const apiKaran = {
-  registerNat: 'https://apikaran.herokuapp.com/auth/register/natural/',
-  registerJur: 'https://apikaran.herokuapp.com/auth/register/juridico/',
-  loginAuth: 'https://apikaran.herokuapp.com/auth/login/',
-
-}
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

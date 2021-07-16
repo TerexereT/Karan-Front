@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {apiKaran} from "../../../environments/environment";
+import {environment} from '../../../environments/environment';
 import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class KaranApiService {
+  private api_url = environment.api.host
+  private source_url = 'auth/'
   constructor(private http: HttpClient) { }
 
   public registerNatural(info: any): Observable<any> {
-    return this.http.post<any>(apiKaran.registerNat,info);
+    return this.http.post<any>(`${this.api_url}${this.source_url}register/natural/`,info);
   }
   public registerJuridico(info: any): Observable<any> {
-    return this.http.post<any>(apiKaran.registerJur,info);
-  }
-  public loginUsr(info: any): Observable<any> {
-    return this.http.post<any>(apiKaran.loginAuth,info);
+    return this.http.post<any>(`${this.api_url}${this.source_url}register/juridico/`,info);
   }
 
 }
