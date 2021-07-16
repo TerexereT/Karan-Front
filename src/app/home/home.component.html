@@ -40,7 +40,7 @@
             <div class="card-body">
 
               <!-- Form -->
-              <form [formGroup]="registerForm" >
+              <form [formGroup]="registerForm">
                 <!-- Heading -->
                 <h3 class="dark-grey-text text-center">
                   <strong>Empieza con nosotros</strong>
@@ -49,37 +49,93 @@
                 <!--Inputs-->
                 <div class="md-form">
                   <i class="fas fa-user prefix grey-text"></i>
-                  <input type="text" formControlName="user" class="form-control" mdbInput placeholder="Usuario">
+                  <input mdbInput [mdbValidate]="true" id="username" type="text" formControlName="username" class="form-control"
+                         placeholder="Usuario">
+                  <mdb-error
+                    *ngIf="this.registerForm.controls['username'].invalid  && (this.registerForm.controls['username'].dirty || this.registerForm.controls['username'].touched)">
+                    <span *ngIf="registerForm.get('username')!.hasError('minlength')">
+                      Se requiere min {{registerForm.get('username')!.errors!.minlength.requiredLength}} caracteres
+                    </span>
+                    <span *ngIf="registerForm.get('username')!.hasError('maxlength')">
+                      Se requiere min {{registerForm.get('username')!.errors!.maxlength.requiredLength}} caracteres
+                    </span>
+                    <span *ngIf="registerForm.get('username')!.hasError('required')">Requerido</span>
+                  </mdb-error>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-lock prefix grey-text"></i>
-                  <input type="password" formControlName="password" class="form-control" mdbInput placeholder="Clave">
+                  <input [mdbValidate]="true" type="password" formControlName="password" class="form-control" mdbInput placeholder="Clave">
+                  <mdb-error
+                    *ngIf="this.registerForm.controls['password'].invalid  && (this.registerForm.controls['password'].dirty || this.registerForm.controls['password'].touched)">
+                    <span *ngIf="registerForm.get('password')!.hasError('minlength')">
+                      Se requiere min {{registerForm.get('password')!.errors!.minlength.requiredLength}} caracteres
+                    </span>
+                    <span *ngIf="registerForm.get('password')!.hasError('maxlength')">
+                      Se requiere min {{registerForm.get('password')!.errors!.maxlength.requiredLength}} caracteres
+                    </span>
+                    <span *ngIf="registerForm.get('password')!.hasError('required')">Requerido</span>
+                  </mdb-error>
                 </div>
 
                 <div class="row">
                   <div class="col">
                     <div class="md-form name_Last">
                       <i class="fas fa-user prefix grey-text"></i>
-                      <input type="text" formControlName="name" class="form-control" mdbInput placeholder="Nombre">
+                      <input type="text" formControlName="first_name" class="form-control" mdbInput [mdbValidate]="true"
+                             placeholder="Nombre">
+                      <mdb-error
+                        *ngIf="this.registerForm.controls['first_name'].invalid  && (this.registerForm.controls['first_name'].dirty || this.registerForm.controls['first_name'].touched)">
+                    <span *ngIf="registerForm.get('first_name')!.hasError('minlength')">
+                      Se requiere min {{registerForm.get('first_name')!.errors!.minlength.requiredLength}} caracteres
+                    </span>
+                        <span *ngIf="registerForm.get('first_name')!.hasError('maxlength')">
+                      Se requiere min {{registerForm.get('first_name')!.errors!.maxlength.requiredLength}} caracteres
+                    </span>
+                        <span *ngIf="registerForm.get('first_name')!.hasError('required')">Requerido</span>
+                      </mdb-error>
                     </div>
                   </div>
                   <div class="col">
                     <div class="md-form name_Last">
                       <i class="fas fa-user prefix grey-text"></i>
-                      <input type="text" formControlName="lastName" class="form-control" mdbInput placeholder="Apellido">
+                      <input type="text" formControlName="last_name" class="form-control" mdbInput [mdbValidate]="true"
+                             placeholder="Apellido">
+                      <mdb-error
+                        *ngIf="this.registerForm.controls['last_name'].invalid  && (this.registerForm.controls['first_name'].dirty || this.registerForm.controls['first_name'].touched)">
+                    <span *ngIf="registerForm.get('last_name')!.hasError('minlength')">
+                      Se requiere min {{registerForm.get('last_name')!.errors!.minlength.requiredLength}} caracteres
+                    </span>
+                        <span *ngIf="registerForm.get('last_name')!.hasError('maxlength')">
+                      Se requiere min {{registerForm.get('last_name')!.errors!.maxlength.requiredLength}} caracteres
+                    </span>
+                        <span *ngIf="registerForm.get('last_name')!.hasError('required')">Requerido</span>
+                      </mdb-error>
                     </div>
                   </div>
                 </div>
 
 
-
                 <div class="md-form">
                   <i class="fas fa-address-card prefix grey-text"></i>
-                  <input type="text" formControlName="dni" class="form-control" mdbInput placeholder="Cédula">
+                  <input type="number" formControlName="dni" class="form-control" mdbInput placeholder="Cédula" [mdbValidate]="true">
+                  <mdb-error
+                    *ngIf="this.registerForm.controls['dni'].invalid  && (this.registerForm.controls['dni'].dirty || this.registerForm.controls['dni'].touched)">
+                    <span *ngIf="registerForm.get('dni')!.hasError('min')">
+                      Se requiere un valor min de {{registerForm.get('dni')!.errors!.min.min}}
+                    </span>
+                    <span *ngIf="registerForm.get('dni')!.hasError('required')">Requerido</span>
+                  </mdb-error>
                 </div>
                 <div class="md-form">
                   <i class="fas fa-envelope prefix grey-text"></i>
-                  <input type="email" formControlName="email" class="form-control" mdbInput placeholder="Correo">
+                  <input type="email" formControlName="email" class="form-control" mdbInput placeholder="Correo" [mdbValidate]="true">
+                  <mdb-error
+                    *ngIf="this.registerForm.controls['email'].invalid  && (this.registerForm.controls['dni'].dirty || this.registerForm.controls['dni'].touched)">
+                    <span *ngIf="registerForm.get('email')!.hasError('email')">
+                      Formato email invalido
+                    </span>
+                    <span *ngIf="registerForm.get('email')!.hasError('required')">Requerido</span>
+                  </mdb-error>
                 </div>
                 <div class="form-check align-middle">
                   <div class="row">
@@ -123,7 +179,7 @@
 <main class="sectionConocenos">
   <div class="container">
 
-<!--    <hr class="my-5">-->
+    <!--    <hr class="my-5">-->
 
     <!--Section: Conocenos-->
     <section>
@@ -140,7 +196,8 @@
               <div class="col-7">
                 <h2>Misión</h2>
                 <hr>
-                <p class="">Brindar productos y servicios financieros con valor agregado para nuestros clientes, otorgando
+                <p class="">Brindar productos y servicios financieros con valor agregado para nuestros clientes,
+                  otorgando
                   atención personalizada y efectiva por parte de nuestro recurso humano, asegurando permanencia,
                   lealtad y rentabilidad a largo plazo y reforzando nuestro compromiso con los clientes.</p>
               </div>
@@ -164,7 +221,8 @@
               <div class="col-7 offset-1">
                 <h2 class="d-flex justify-content-end">Visión</h2>
                 <hr>
-                <p class="">Brindar productos y servicios financieros con valor agregado para nuestros clientes, otorgando
+                <p class="">Brindar productos y servicios financieros con valor agregado para nuestros clientes,
+                  otorgando
                   atención personalizada y efectiva por parte de nuestro recurso humano, asegurando permanencia,
                   lealtad y rentabilidad a largo plazo y reforzando nuestro compromiso con los clientes.</p>
               </div>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import { KaranApiService } from '../core/services/karan-api.service'
-import {AlertsService} from "../core/services/alerts.service";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AlertsService} from '../core/services/alerts.service';
+import {Auth2Service} from '../core/services/auth/auth2.service';
+import {signUp} from '../core/interfaces/auth2';
 
 
 @Component({
@@ -11,34 +12,22 @@ import {AlertsService} from "../core/services/alerts.service";
 })
 export class HomeComponent implements OnInit {
   registerForm: FormGroup;
-  dataRegister: FormGroup;
 
   constructor(
     private fB: FormBuilder,
-    private karanApiService: KaranApiService,
+    private auth2Service: Auth2Service,
     private alerts: AlertsService,
   ) {
     this.registerForm = fB.group({
-      user: ['',Validators.minLength(6)],
-      password: ['', Validators.minLength(8)],
-      name: ['', Validators.minLength(2)],
-      lastName: ['', Validators.minLength(2)],
-      email: [''],
-      dni: ['', Validators.minLength(2)],
+      username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
+      first_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      last_name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.email]],
+      dni: ['', [Validators.required, Validators.min(1)]],
       juridica: [false],
     });
-    this.dataRegister = this.fB.group({
-        email: [''],
-        username: [''],
-        dni: [''],
-        first_name: [''],
-        last_name: [''],
-        password: [''],
-        password_confirmation: ['']
-      }
-    )
   }
-
 
 
   ngOnInit(): void {
@@ -62,68 +51,43 @@ export class HomeComponent implements OnInit {
     }
 
     const msgAux = error[1].toString();
-    if (msgAux === "This field must be unique.") {
-      msg = "ya existe, intente otro diferente";
-    } else if (msgAux === "Enter a valid email address") {
-      msg = "ya esta registrado";
-    } else if (msgAux.indexOf("characters") !== -1) {
-      msg = "es muy corto"
+    if (msgAux === 'This field must be unique.') {
+      msg = 'ya existe, intente otro diferente';
+    } else if (msgAux === 'Enter a valid email address') {
+      msg = 'ya esta registrado';
+    } else if (msgAux.indexOf('characters') !== -1) {
+      msg = 'es muy corto'
     } else {
-      msg = "es invalido"
+      msg = 'es invalido'
     }
 
     return tipo + msg;
   }
 
 
-  registrarUsuario () {
-    this.dataRegister = this.fB.group({
-        email: [this.registerForm.value.email],
-        username: [this.registerForm.value.user],
-        dni: [this.registerForm.value.dni],
-        first_name: [this.registerForm.value.name],
-        last_name: [this.registerForm.value.lastName],
-        password: [this.registerForm.value.password],
-        password_confirmation: [this.registerForm.value.password]
+  registrarUsuario() {
+    this.registerForm.markAllAsTouched()
+    console.log(this.registerForm.get('dni')?.errors)
+    if (this.registerForm.valid){
+      const data: signUp = {
+        ...this.registerForm.value,
+        password_confirmation: this.registerForm.value.password
       }
-    )
-    if(this.registerForm.value.juridica){
-      const aux = this.karanApiService.registerJuridico(this.dataRegister.value);
-      aux.subscribe((data:any)=>{
-        if (data !== null) {
-          this.alerts.showAlerts('Registro Con Exito!', 'success', 'Ahora puede acceder a su cuenta.');
-        }
-      },
-        (error)=>{
-          let errors: any = [];
-          Object.entries(error.error).map((item)=>{
-            if(item[0]==="password_confirmation"){
-              return;
-            }
-            errors.push(this.registrarError(item))
-          })
-          this.alerts.showAlerts('Ups!', 'error', `${errors.join(", ").toString()}`);
-        }
-      )
-    }else{
-      const aux = this.karanApiService.registerNatural(this.dataRegister.value);
-      aux.subscribe((data:any)=>{
-        if (data !== null) {
-          this.alerts.showAlerts('Registro Con Exito!', 'success', 'Ahora puede acceder a su cuenta.');
-        }
-      },
-      (error)=>{
-          let errors: any = [];
-          Object.entries(error.error).map((item)=>{
-            if(item[0]==="password_confirmation"){
-              return;
-            }
-            errors.push(this.registrarError(item))
-          })
-          this.alerts.showAlerts('Ups!', 'error', `${errors.join(", ").toString()}`);
-        }
-      )
+      if (this.registerForm.value.juridica){
+        this.auth2Service.registerJuridico(data).subscribe(
+          () => {
+            this.alerts.showAlerts('Registro Con Exito!', 'success', 'Ahora puede acceder a su cuenta.');
+          },
+          error => null
+        )
+      }else {
+        this.auth2Service.registerNatural(data).subscribe(
+          () => {
+            this.alerts.showAlerts('Registro Con Exito!', 'success', 'Ahora puede acceder a su cuenta.');
+          },
+          error => null
+        )
+      }
     }
-
   }
 }

@@ -26,8 +26,11 @@ export class ApiErrorInterceptor implements HttpInterceptor {
           if (error.error[Object.keys(error.error)[0]] instanceof Array){
             this.alertService.showError(error.error[Object.keys(error.error)[0]][0],Object.keys(error.error)[0])
           }
-          if (typeof error.error[Object.keys(error.error)[0]] === 'string'){
+          else if (typeof error.error[Object.keys(error.error)[0]] === 'string'){
             this.alertService.showError(error.error[Object.keys(error.error)[0]],Object.keys(error.error)[0])
+          }
+          else if (error.error.error[Object.keys(error.error.error)[0]] instanceof Array){
+            this.alertService.showError(error.error.error[Object.keys(error.error.error)[0]][0],Object.keys(error.error.error)[0])
           }
         }
         return throwError(error);
