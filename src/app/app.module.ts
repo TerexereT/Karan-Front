@@ -16,6 +16,7 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ApiErrorInterceptor} from './interceptors/api-error.interceptor';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MDBBootstrapModulesPro.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule,
+    ToastrModule.forRoot(),
     SweetAlert2Module.forRoot(),
   ],
   providers: [

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatSnackBarConfig} from '@angular/material/snack-bar/snack-bar-config';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AlertsService {
     verticalPosition: 'top',
     duration: 50000
   }
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private toastr: ToastrService) { }
 
   private showSwal(title: string, icon: any, key?: string) {
         Swal.fire({
@@ -29,7 +30,11 @@ export class AlertsService {
     return this.showSwal(Text, icon, key);
   }
 
-  showSnackbar(message: string, action: string = '', config: MatSnackBarConfig = this.defaultSnackConfig) {
-    this._snackBar.open(message,action,config)
+  showSuccess(message: string, title: string = '') {
+    this.toastr.success(message, title);
+  }
+
+  showError(message: string, title: string = '') {
+    this.toastr.error(message, title);
   }
 }

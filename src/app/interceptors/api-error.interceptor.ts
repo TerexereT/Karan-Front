@@ -21,15 +21,13 @@ export class ApiErrorInterceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.error instanceof ErrorEvent) {
-          this.alertService.showSnackbar('Error de red ocurrido')
+          this.alertService.showError('Error de red ocurrido', 'Error')
         } else {
-          switch (typeof error.error.error){
-            case 'string':
-              this.alertService.showSnackbar(error.error.error)
-              break
-            case 'object':
-              this.alertService.showSnackbar(error.error.keys)
-              break
+          if (error.error[Object.keys(error.error)[0]] instanceof Array){
+            this.alertService.showError(error.error[Object.keys(error.error)[0]][0],Object.keys(error.error)[0])
+          }
+          if (typeof error.error[Object.keys(error.error)[0]] === 'string'){
+            this.alertService.showError(error.error[Object.keys(error.error)[0]],Object.keys(error.error)[0])
           }
         }
         return throwError(error);
