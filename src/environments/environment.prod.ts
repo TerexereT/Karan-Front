@@ -1,9 +1,8 @@
 export const environment = {
-  production: true
+  production: true,
+  api: {
+    host: 'https://apikaran.herokuapp.com/',
+    client_id: '0itytCOT12XkYe5N66O7sSxHsKzqAdFwXqOaVE11',
+    client_secret: 'vf3W8Qmi46wafy9z9o2hRiXkUMJMgpDEhKLEvNazRXYogWIuSc5jPdfruYbPHP0EfeaENsNO952QR53LYnXEfXhISjveLPYgSFQTeBV5RWvoaIUiITgEQJYwStr3mW8G'
+  }
 };
-
-export const apiKaran = {
-  registerNat: 'https://apikaran.herokuapp.com/auth/register/natural/',
-  registerJur: 'https://apikaran.herokuapp.com/auth/register/juridico/',
-  loginAuth: 'https://apikaran.herokuapp.com/auth/login/',
-}
