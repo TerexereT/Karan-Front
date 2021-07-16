@@ -42,7 +42,9 @@ export class ModalComponent implements OnInit {
       }
       this.auth2Service.getAccessToken(data).subscribe(
         value => {
-          console.log(value)
+          this.router.navigate(['/home']).finally(() => {
+            this.modalRef.hide()
+          })
         },
         error => null
       )

@@ -11,24 +11,20 @@ import {MDBBootstrapModulesPro} from 'ng-uikit-pro-standard';
 import {MDBSpinningPreloader} from 'ng-uikit-pro-standard';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {ApiErrorInterceptor} from './interceptors/api-error.interceptor';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    // ModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    MDBBootstrapModule.forRoot(),
     MDBBootstrapModulesPro.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,

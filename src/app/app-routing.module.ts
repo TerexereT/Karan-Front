@@ -5,7 +5,7 @@ import { IndexComponent} from "./dashboard/index/index.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
-  { path: ':index', component: IndexComponent},
+  { path: 'home', component: IndexComponent},
 
 ];
 
