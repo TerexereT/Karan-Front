@@ -49,7 +49,8 @@
                 <!--Inputs-->
                 <div class="md-form">
                   <i class="fas fa-user prefix grey-text"></i>
-                  <input mdbInput [mdbValidate]="true" id="username" type="text" formControlName="username" class="form-control"
+                  <input mdbInput [mdbValidate]="true" id="username" type="text" formControlName="username"
+                         class="form-control"
                          placeholder="Usuario">
                   <mdb-error
                     *ngIf="this.registerForm.controls['username'].invalid  && (this.registerForm.controls['username'].dirty || this.registerForm.controls['username'].touched)">
@@ -64,7 +65,8 @@
                 </div>
                 <div class="md-form">
                   <i class="fas fa-lock prefix grey-text"></i>
-                  <input [mdbValidate]="true" type="password" formControlName="password" class="form-control" mdbInput placeholder="Clave">
+                  <input [mdbValidate]="true" type="password" formControlName="password" class="form-control" mdbInput
+                         placeholder="Clave">
                   <mdb-error
                     *ngIf="this.registerForm.controls['password'].invalid  && (this.registerForm.controls['password'].dirty || this.registerForm.controls['password'].touched)">
                     <span *ngIf="registerForm.get('password')!.hasError('minlength')">
@@ -101,7 +103,7 @@
                       <input type="text" formControlName="last_name" class="form-control" mdbInput [mdbValidate]="true"
                              placeholder="Apellido">
                       <mdb-error
-                        *ngIf="this.registerForm.controls['last_name'].invalid  && (this.registerForm.controls['first_name'].dirty || this.registerForm.controls['first_name'].touched)">
+                        *ngIf="this.registerForm.controls['last_name'].invalid  && (this.registerForm.controls['last_name'].dirty || this.registerForm.controls['last_name'].touched)">
                     <span *ngIf="registerForm.get('last_name')!.hasError('minlength')">
                       Se requiere min {{registerForm.get('last_name')!.errors!.minlength.requiredLength}} caracteres
                     </span>
@@ -117,7 +119,8 @@
 
                 <div class="md-form">
                   <i class="fas fa-address-card prefix grey-text"></i>
-                  <input type="number" formControlName="dni" class="form-control" mdbInput placeholder="Cédula" [mdbValidate]="true">
+                  <input type="number" formControlName="dni" class="form-control" mdbInput placeholder="Cédula"
+                         [mdbValidate]="true">
                   <mdb-error
                     *ngIf="this.registerForm.controls['dni'].invalid  && (this.registerForm.controls['dni'].dirty || this.registerForm.controls['dni'].touched)">
                     <span *ngIf="registerForm.get('dni')!.hasError('min')">
@@ -128,9 +131,10 @@
                 </div>
                 <div class="md-form">
                   <i class="fas fa-envelope prefix grey-text"></i>
-                  <input type="email" formControlName="email" class="form-control" mdbInput placeholder="Correo" [mdbValidate]="true">
+                  <input type="email" formControlName="email" class="form-control" mdbInput placeholder="Correo"
+                         [mdbValidate]="true">
                   <mdb-error
-                    *ngIf="this.registerForm.controls['email'].invalid  && (this.registerForm.controls['dni'].dirty || this.registerForm.controls['dni'].touched)">
+                    *ngIf="this.registerForm.controls['email'].invalid  && (this.registerForm.controls['email'].dirty || this.registerForm.controls['email'].touched)">
                     <span *ngIf="registerForm.get('email')!.hasError('email')">
                       Formato email invalido
                     </span>

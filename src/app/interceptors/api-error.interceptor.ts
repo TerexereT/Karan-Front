@@ -7,10 +7,11 @@ import {AlertsService} from '../core/services/alerts.service';
 @Injectable()
 export class ApiErrorInterceptor implements HttpInterceptor {
 
-  constructor(private alertService: AlertsService) {}
+  constructor(private alertService: AlertsService) {
+  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-   return next.handle(request).pipe(
+    return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         return event;
       }),
@@ -18,14 +19,12 @@ export class ApiErrorInterceptor implements HttpInterceptor {
         if (error.error instanceof ErrorEvent) {
           this.alertService.showError('Error de red ocurrido', 'Error')
         } else {
-          if (error.error[Object.keys(error.error)[0]] instanceof Array){
-            this.alertService.showError(error.error[Object.keys(error.error)[0]][0],Object.keys(error.error)[0])
-          }
-          else if (typeof error.error[Object.keys(error.error)[0]] === 'string'){
-            this.alertService.showError(error.error[Object.keys(error.error)[0]],Object.keys(error.error)[0])
-          }
-          else if (error.error.error[Object.keys(error.error.error)[0]] instanceof Array){
-            this.alertService.showError(error.error.error[Object.keys(error.error.error)[0]][0],Object.keys(error.error.error)[0])
+          if (error.error[Object.keys(error.error)[0]] instanceof Array) {
+            this.alertService.showError(error.error[Object.keys(error.error)[0]][0], Object.keys(error.error)[0])
+          } else if (typeof error.error[Object.keys(error.error)[0]] === 'string') {
+            this.alertService.showError(error.error[Object.keys(error.error)[0]], Object.keys(error.error)[0])
+          } else if (error.error.error[Object.keys(error.error.error)[0]] instanceof Array) {
+            this.alertService.showError(error.error.error[Object.keys(error.error.error)[0]][0], Object.keys(error.error.error)[0])
           }
         }
         return throwError(error);

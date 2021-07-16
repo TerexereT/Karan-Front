@@ -13,15 +13,16 @@ import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
     FooterComponent,
     ModalComponent
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        IconsModule,
-        MDBBootstrapModule.forRoot()
-    ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    IconsModule,
+    MDBBootstrapModule.forRoot()
+  ],
   exports: [
     HeaderComponent,
     FooterComponent,
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

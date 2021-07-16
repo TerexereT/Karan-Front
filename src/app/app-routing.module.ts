@@ -4,8 +4,8 @@ import {HomeComponent} from './home/home.component';
 import {IndexComponent} from './dashboard/index/index.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'home', component: IndexComponent},
+  {path: '', component: HomeComponent},
+  {path: 'home', component: IndexComponent},
 
 ];
 
@@ -13,4 +13,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

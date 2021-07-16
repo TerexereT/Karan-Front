@@ -12,20 +12,22 @@ export class AlertsService {
     verticalPosition: 'top',
     duration: 50000
   }
-  constructor(private toastr: ToastrService) { }
 
-  private showSwal(title: string, icon: any, key?: string) {
-        Swal.fire({
-          title,
-          text: key,
-          icon,
-          confirmButtonColor: '#51be95',
-          confirmButtonText: 'Aceptar',
-          cancelButtonText: 'Cerrar',
-        });
+  constructor(private toastr: ToastrService) {
   }
 
-  showAlerts (Text: string, icon: 'success'| 'error', key?:string) {
+  private showSwal(title: string, icon: any, key?: string) {
+    Swal.fire({
+      title,
+      text: key,
+      icon,
+      confirmButtonColor: '#51be95',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cerrar',
+    });
+  }
+
+  showAlerts(Text: string, icon: 'success' | 'error', key?: string) {
     return this.showSwal(Text, icon, key);
   }
 

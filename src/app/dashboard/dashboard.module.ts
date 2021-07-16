@@ -16,4 +16,5 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     IndexComponent,
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {
+}

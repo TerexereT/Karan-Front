@@ -68,19 +68,19 @@ export class HomeComponent implements OnInit {
   registrarUsuario() {
     this.registerForm.markAllAsTouched()
     console.log(this.registerForm.get('dni')?.errors)
-    if (this.registerForm.valid){
+    if (this.registerForm.valid) {
       const data: signUp = {
         ...this.registerForm.value,
         password_confirmation: this.registerForm.value.password
       }
-      if (this.registerForm.value.juridica){
+      if (this.registerForm.value.juridica) {
         this.auth2Service.registerJuridico(data).subscribe(
           () => {
             this.alerts.showAlerts('Registro Con Exito!', 'success', 'Ahora puede acceder a su cuenta.');
           },
           error => null
         )
-      }else {
+      } else {
         this.auth2Service.registerNatural(data).subscribe(
           () => {
             this.alerts.showAlerts('Registro Con Exito!', 'success', 'Ahora puede acceder a su cuenta.');

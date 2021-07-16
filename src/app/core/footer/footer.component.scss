@@ -9,7 +9,7 @@
   grid-template-columns: 2fr 1fr 2fr;
 }
 
-.brand-logoFooter{
+.brand-logoFooter {
   max-height: 50px;
 }
 
@@ -17,7 +17,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  >p {
+
+  > p {
     margin: 0;
   }
 }

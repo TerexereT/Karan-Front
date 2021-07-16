@@ -10,7 +10,8 @@
       <!-- Material input email -->
       <div class="md-form">
         <i class="fas fa-user  prefix grey-text"></i>
-        <input [mdbValidate]="true" type="text" formControlName="username" class="form-control" mdbInput placeholder="Usuario">
+        <input [mdbValidate]="true" type="text" formControlName="username" class="form-control" mdbInput
+               placeholder="Usuario">
         <mdb-error
           *ngIf="this.loginForm.controls['username'].invalid  && (this.loginForm.controls['username'].dirty || this.loginForm.controls['username'].touched)">
           usuario requerido
@@ -19,7 +20,8 @@
       <!-- Material input password -->
       <div class="md-form">
         <i class="fas fa-lock  prefix grey-text"></i>
-        <input [mdbValidate]="true" type="password" formControlName="password" class="form-control" placeholder="Contraseña">
+        <input [mdbValidate]="true" type="password" formControlName="password" class="form-control"
+               placeholder="Contraseña">
         <mdb-error
           *ngIf="this.loginForm.controls['password'].invalid  && (this.loginForm.controls['password'].dirty || this.loginForm.controls['password'].touched)">
           password requerido

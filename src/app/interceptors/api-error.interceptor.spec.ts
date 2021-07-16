@@ -6,7 +6,7 @@ describe('ApiErrorInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       ApiErrorInterceptor
-      ]
+    ]
   }));
 
   it('should be created', () => {

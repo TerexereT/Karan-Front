@@ -12,7 +12,9 @@ export class HeaderComponent implements OnInit {
   validatingForm!: FormGroup;
   // @ts-ignore
   modalRef: MDBModalRef;
-  constructor(private modalService: MDBModalService) { }
+
+  constructor(private modalService: MDBModalService) {
+  }
 
   ngOnInit(): void {
     this.validatingForm = new FormGroup({
