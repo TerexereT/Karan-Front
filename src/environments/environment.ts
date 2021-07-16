@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: {
+    host: 'http://localhost:8000/',
+    client_id: 'xEpUtiGXfGDD2slKdkkDGmkZAryBT98foLei0ySD',
+    client_secret: '8dVhcyLLxB4kmRxcy1bzvR7svQ0rrD79nEZ6j906TFp8nVo9uhj9eiFhYUMEm9slbylv3RCaiEBa2m1ZlZotLhrairPasDrP9MUpqN8bbhqP1jqsdJHZr6YEpdLJ64iL'
+  }
 };
 
 export const apiKaran = {

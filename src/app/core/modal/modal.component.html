@@ -6,21 +6,29 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="loginForm" class="p-4">
+    <form [formGroup]="loginForm" class="p-4" (ngSubmit)="onSubmit()">
       <!-- Material input email -->
       <div class="md-form">
-        <i class="far fa-envelope  prefix grey-text"></i>
-        <input type="usuario" formControlName="user" class="form-control" mdbInput placeholder="Usuario">
+        <i class="fas fa-user  prefix grey-text"></i>
+        <input type="text" formControlName="username" class="form-control" mdbInput placeholder="Usuario">
+        <mdb-error
+          *ngIf="this.loginForm.controls['username'].invalid  && (this.loginForm.controls['username'].dirty || this.loginForm.controls['username'].touched)">
+          usuario requerido
+        </mdb-error>
       </div>
       <!-- Material input password -->
       <div class="md-form">
         <i class="fas fa-lock  prefix grey-text"></i>
-        <input type="password" formControlName="password" class="form-control" mdbInput placeholder="Contraseña">
+        <input type="password" formControlName="password" class="form-control" placeholder="Contraseña">
+        <mdb-error
+          *ngIf="this.loginForm.controls['password'].invalid  && (this.loginForm.controls['password'].dirty || this.loginForm.controls['password'].touched)">
+          password requerido
+        </mdb-error>
       </div>
 
       <!-- Button-->
       <div class="text-center py-4 mt-3 ">
-        <button class="btn buttonKaranPrimaryModals w-50" (click)="logearse()">Iniciar Sesión</button>
+        <button class="btn buttonKaranPrimary w-50" type="submit">Iniciar Sesión</button>
       </div>
     </form>
   </div>

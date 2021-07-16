@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ModalComponent } from './modal/modal.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {IconsModule} from "angular-bootstrap-md";
+import {IconsModule, MDBBootstrapModule} from 'angular-bootstrap-md';
 
 
 
@@ -14,11 +14,12 @@ import {IconsModule} from "angular-bootstrap-md";
     FooterComponent,
     ModalComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    IconsModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        IconsModule,
+        MDBBootstrapModule.forRoot()
+    ],
   exports: [
     HeaderComponent,
     FooterComponent,
