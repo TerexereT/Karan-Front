@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   api: {
-    host: 'http://localhost:8000/',
-    client_id: 'xEpUtiGXfGDD2slKdkkDGmkZAryBT98foLei0ySD',
-    client_secret: '8dVhcyLLxB4kmRxcy1bzvR7svQ0rrD79nEZ6j906TFp8nVo9uhj9eiFhYUMEm9slbylv3RCaiEBa2m1ZlZotLhrairPasDrP9MUpqN8bbhqP1jqsdJHZr6YEpdLJ64iL'
+    host: 'https://apikaran.herokuapp.com/',
+    client_id: '0itytCOT12XkYe5N66O7sSxHsKzqAdFwXqOaVE11',
+    client_secret: 'vf3W8Qmi46wafy9z9o2hRiXkUMJMgpDEhKLEvNazRXYogWIuSc5jPdfruYbPHP0EfeaENsNO952QR53LYnXEfXhISjveLPYgSFQTeBV5RWvoaIUiITgEQJYwStr3mW8G'
   }
 };
 /*
